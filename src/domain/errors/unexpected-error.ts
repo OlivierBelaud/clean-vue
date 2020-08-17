@@ -1,6 +1,6 @@
 export class UnexpectedError extends Error {
   constructor () {
-    super('Requisição inválida')
+    super('Try again in a few moment !')
     this.name = 'UnexpectedError'
   }
 }
