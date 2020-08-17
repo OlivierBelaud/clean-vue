@@ -5,6 +5,7 @@ import { mockAuthentication } from '@/domain/test/mock-authentication'
 import { InvalidCredentialsError } from '@/domain/errors/invalid-credentials-error'
 import { UnexpectedError } from '@/domain/errors/unexpected-error'
 import faker from 'faker'
+import { InvalidApiError } from '@/domain/errors/invalid-api-error'
 
 type SutTypes = {
   sut: RemoteAuthentication
@@ -60,5 +61,17 @@ describe('RemoteAuthentication', () => {
     const authenticationParams = mockAuthentication()
     const promise = sut.auth(authenticationParams)
     await expect(promise).rejects.toThrow(new UnexpectedError())
+  })
+})
+
+describe('RemoteAuthentication', () => {
+  test('Should throw InvalidApiError if HttpPostClient return 404', async () => {
+    const { sut, httpPostClientSpy } = makeSut()
+    httpPostClientSpy.response = {
+      statusCode: HttpStatusCode.invalidapi
+    }
+    const authenticationParams = mockAuthentication()
+    const promise = sut.auth(authenticationParams)
+    await expect(promise).rejects.toThrow(new InvalidApiError())
   })
 })
