@@ -1,8 +1,9 @@
 import { RemoteAuthentication } from './remote-authentication'
 import { HttpPostClientSpy } from '@/data/test/mock-http-client'
+import { HttpStatusCode } from '@/data/protocols/http/http-response'
 import { mockAuthentication } from '@/domain/test/mock-authentication'
 import { InvalidCredentialsError } from '@/domain/errors/invalid-credentials-error'
-import { HttpStatusCode } from '@/data/protocols/http/http-response'
+import { UnexpectedError } from '@/domain/errors/unexpected-error'
 import faker from 'faker'
 
 type SutTypes = {
@@ -47,5 +48,17 @@ describe('RemoteAuthentication', () => {
     const authenticationParams = mockAuthentication()
     const promise = sut.auth(authenticationParams)
     await expect(promise).rejects.toThrow(new InvalidCredentialsError())
+  })
+})
+
+describe('RemoteAuthentication', () => {
+  test('Should throw UnexpectedError if HttpPostClient return 400', async () => {
+    const { sut, httpPostClientSpy } = makeSut()
+    httpPostClientSpy.response = {
+      statusCode: HttpStatusCode.unexpected
+    }
+    const authenticationParams = mockAuthentication()
+    const promise = sut.auth(authenticationParams)
+    await expect(promise).rejects.toThrow(new UnexpectedError())
   })
 })
