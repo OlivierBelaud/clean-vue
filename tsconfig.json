@@ -4,13 +4,14 @@
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext"
+      "esnext",
+      "scripthost"
     ],
     "esModuleInterop": true,
     "module": "esnext",
-    "strict": true,
     "moduleResolution": "node",
-    "jsx": "react",
+    "strict": true,
+    "jsx": "preserve",
     "rootDir": "src",
     "baseUrl": "src",
     "paths": {
@@ -21,5 +22,8 @@
   },
   "include": [
     "src"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }
