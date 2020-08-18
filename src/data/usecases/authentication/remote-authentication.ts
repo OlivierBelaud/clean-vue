@@ -15,7 +15,7 @@ export class RemoteAuthentication implements Authentication {
       body: params
     })
     switch (httpResponse.statusCode) {
-      case HttpStatusCode.ok: return httpResponse.body
+      case HttpStatusCode.ok: return httpResponse.body ?? { accessToken: 'invalidAccessToken' }
       case HttpStatusCode.unauthorized: throw new InvalidCredentialsError()
       default: throw new UnexpectedError()
     }

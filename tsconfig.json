@@ -8,6 +8,7 @@
     ],
     "esModuleInterop": true,
     "module": "esnext",
+    "strict": true,
     "moduleResolution": "node",
     "jsx": "react",
     "rootDir": "src",
