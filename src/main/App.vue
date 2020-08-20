@@ -3,9 +3,9 @@
   <button @click="increase">Clicked {{ count }} times.</button>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref } from 'vue'
 export default defineComponent({
-  setup() {
+  setup () {
     const count = ref(0)
     const increase = () => {
       count.value++
@@ -13,8 +13,8 @@ export default defineComponent({
 
     return {
       count,
-      increase,
+      increase
     }
   }
-});
+})
 </script>
