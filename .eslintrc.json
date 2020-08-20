@@ -1,8 +1,12 @@
 {
   "extends": [
-    "standard-with-typescript"
+    "standard-with-typescript",
+    "plugin:vue/vue3-essential",
+    "eslint:recommended",
+    "@vue/typescript/recommended"
   ],
   "parserOptions": {
+    "ecmaVersion": 2020,
     "project": "./tsconfig-eslint.json"
   },
   "rules": {
