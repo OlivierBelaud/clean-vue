@@ -5,7 +5,7 @@ module.exports = {
   ],
   coverageDirectory: 'coverage',
   testEnvironment: 'jsdom',
-  preset: '@vue/cli-plugin-unit-jest/presets/typescript-and-babel',
+  // preset: '@vue/cli-plugin-unit-jest/presets/typescript-and-babel',
   transform: {
     '.+\\.ts$': 'ts-jest',
     '^.+\\.vue$': 'vue-jest'
