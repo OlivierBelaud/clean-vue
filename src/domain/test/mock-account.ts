@@ -1,5 +1,5 @@
 import { AuthenticationParams } from '@/domain/usecases'
-import { AccountModel } from '@/domain/models/account-model'
+import { AccountModel } from '@/domain/models'
 import faker from 'faker'
 
 // Fonction qui retourne un object
